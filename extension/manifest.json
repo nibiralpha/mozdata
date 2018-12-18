@@ -1,0 +1,34 @@
+{
+  "manifest_version": 2,
+  "name": "Hello Chrome",
+  "description": "This is a sample of a chrome extension",
+  "version": "0.1",
+  "permissions": [
+    "cookies",
+    "tabs",
+    "http://*/*",
+    "https://*/*",
+    "*://*/*"
+  ],
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false
+  },
+  "browser_action": {
+    "default_icon": "icon.png",
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.google.com/*",
+        "http://localhost/*"
+      ],
+      "js": [
+        "jquery-3.1.1.min.js",
+        "jquery.cookie.js",
+        "contentScript.js"
+      ]
+    }
+  ]
+}
