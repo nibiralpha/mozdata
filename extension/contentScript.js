@@ -6,6 +6,7 @@ setTimeout(function () {
         return;
     }
 
+    var hasMore = false;
     var q = $("input[name*='q']").val();
     var vol = $("#xt-info").html();
 
@@ -14,10 +15,18 @@ setTimeout(function () {
         vol = vol[0].replace(/[^0-9]/g, '');
     }
 
+    console.log($(".JolIg").html());
+
+
+    if ($(".JolIg").html() == "People also ask") {
+        hasMore = true;
+    }   
+
     var schema = {
         dataInfo: {
             keyword: q,
             vol: vol,
+            hasMore: hasMore,
             data: [
 
             ]
@@ -33,7 +42,7 @@ setTimeout(function () {
         var a = $('.mozbar-serp-item-wGA7MhRhQ3WS')[i].contentWindow.document;
         var b = $('.mozbar-serp-item-wGA7MhRhQ3WS')[i];
         var link = $(b).prev().prev().prev().find("a").attr('href');
-        
+
         var pa = $(a).find('.title:nth-child(2)').html();
         pa = pa.replace(/[^0-9]/g, '');
         var da = $(a).find('.title:nth-child(1)').html();
