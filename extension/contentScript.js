@@ -65,7 +65,10 @@ setTimeout(function () {
             var keyWord = $(this).find("td:eq(1)").html().split("<")[0];
 
             var keyVol = $(this).find("td:eq(2)").html().replace(/[^0-9]/g, '');
-            stack.push({ keyword: keyWord, number: 0, vol: keyVol, c: false });
+            if(keyVol > 999){
+                stack.push({ keyword: keyWord, number: 0, vol: keyVol, c: false });    
+            }
+            
         }
     });
 
@@ -74,7 +77,9 @@ setTimeout(function () {
         if ($(this).find("td:eq(1)").length > 0) {
             var similerKeyWord = $(this).find("td:eq(1)").html().split("<")[0];
             var similerKeyWordVol = $(this).find("td:eq(2)").html().replace(/[^0-9]/g, '');
-            stack.push({ keyword: similerKeyWord, number: 0, vol: similerKeyWordVol, c: false });
+            if(similerKeyWordVol > 999){
+                stack.push({ keyword: similerKeyWord, number: 0, vol: similerKeyWordVol, c: false });
+            }
         }
     });
 
