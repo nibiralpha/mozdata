@@ -62,8 +62,10 @@ setTimeout(function () {
     var widget = $("#xt-related-search");
     var keywords = $(widget).find("tbody tr").each(function () {
         if ($(this).find("td:eq(1)").length > 0) {
-            var keyWord = $(this).find("td:eq(1)").html().split("<")[0];
-
+            // var keyWord = $(this).find("td:eq(1)").html().split("<")[0];
+            var keyWord = $(this).find("td:eq(1)").find("a").html();
+            // console.log($(this).find("td:eq(1)").find("a").html());
+            
             var keyVol = $(this).find("td:eq(2)").html().replace(/[^0-9]/g, '');
             if(keyVol > 999){
                 stack.push({ keyword: keyWord, number: 0, vol: keyVol, c: false });    
@@ -75,7 +77,8 @@ setTimeout(function () {
     var similerSrch = $("#xt-google-people-search");
     var similerKeywords = $(similerSrch).find("tbody tr").each(function () {
         if ($(this).find("td:eq(1)").length > 0) {
-            var similerKeyWord = $(this).find("td:eq(1)").html().split("<")[0];
+            // var similerKeyWord = $(this).find("td:eq(1)").html().split("<")[0];
+            var similerKeyWord = $(this).find("td:eq(1)").find("a").html(); 
             var similerKeyWordVol = $(this).find("td:eq(2)").html().replace(/[^0-9]/g, '');
             if(similerKeyWordVol > 999){
                 stack.push({ keyword: similerKeyWord, number: 0, vol: similerKeyWordVol, c: false });
